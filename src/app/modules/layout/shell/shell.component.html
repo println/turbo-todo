@@ -72,23 +72,23 @@
          aria-labelledby="bdSidebarOffcanvasLabel" aria-modal="true" role="dialog" (transitionend)="endToggling()"
          [class.show]="isActive" [class.hiding]="isClosing" [class.showing]="isOpening">
       <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse docs</h5>
+        <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Browse</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
                 data-bs-target="#bdSidebar" (click)="startClose()"></button>
       </div>
 
       <div class="offcanvas-body">
         <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
-          <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+          <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2 d-flex">
             <li class="bd-links-group py-2">
               <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
                 <svg class="bi me-2" style="color: var(--bs-indigo);" aria-hidden="true">
                   <use xlink:href="#book-half"></use>
                 </svg>
-                Getting started
+                <span class="fs-4 h">Getting started</span>
               </strong>
 
-              <ul class="list-unstyled fw-normal pb-2 small">
+              <ul class="list-unstyled fw-normal pb-2 fs-6">
                 <li>
                   <a [routerLink]="route.dashboard.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">Dashboard</a>
                 </li>

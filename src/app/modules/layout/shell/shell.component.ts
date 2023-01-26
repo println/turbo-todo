@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { ROUTE } from '@config';
 
 @Component({
@@ -15,9 +16,15 @@ export class ShellComponent implements OnInit {
   isClosing = false;
   action: string = '';
 
-  constructor() {}
+  constructor(protected router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.events.subscribe((e) => {
+      if (this.isActive) {
+        this.startClose();
+      }
+    });
+  }
 
   toggle() {
     this.isActive = !this.isActive;
