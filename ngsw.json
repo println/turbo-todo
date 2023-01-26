@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1674743714220,
+  "timestamp": 1674748736024,
   "index": "/turbo-todo/index.html",
   "assetGroups": [
     {
@@ -19,10 +19,10 @@
         "/turbo-todo/842.674dc404c0f9b1d5.js",
         "/turbo-todo/favicon.ico",
         "/turbo-todo/index.html",
-        "/turbo-todo/main.02259635d4841295.js",
+        "/turbo-todo/main.a4937e1917cc3333.js",
         "/turbo-todo/manifest.webmanifest",
         "/turbo-todo/polyfills.32288760c5309585.js",
-        "/turbo-todo/runtime.6c698aecf5500368.js",
+        "/turbo-todo/runtime.1300701f6c665ed5.js",
         "/turbo-todo/styles.45c16668564ce3c9.css"
       ],
       "patterns": []
@@ -64,11 +64,11 @@
     "/turbo-todo/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/turbo-todo/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/turbo-todo/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/turbo-todo/index.html": "1c1bd5f16a6397dac8625989945dac5fc2ad6b31",
-    "/turbo-todo/main.02259635d4841295.js": "556c5010329a68f3a004575230302f8c3dcdfabe",
+    "/turbo-todo/index.html": "cb26325c4eafb53bd9dd65b96d9d10e342931488",
+    "/turbo-todo/main.a4937e1917cc3333.js": "9d0c82b1e6962ccbf0a3ed1ba82a0ba75af33065",
     "/turbo-todo/manifest.webmanifest": "43a350ee4f0ce8dd97b65962200629925ddb702c",
     "/turbo-todo/polyfills.32288760c5309585.js": "6120d5507ef23566711ba2893d1037bc306c4a47",
-    "/turbo-todo/runtime.6c698aecf5500368.js": "7db4a545bf1a174b7a3d7adabc548c1502ac2e4e",
+    "/turbo-todo/runtime.1300701f6c665ed5.js": "925f798a02591a3856f11ba1cceb69a225f323aa",
     "/turbo-todo/styles.45c16668564ce3c9.css": "b935ba50f320cdefbd73370aa4014aeb919683aa"
   },
   "navigationUrls": [
