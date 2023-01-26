@@ -5,8 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ci": "npm run write:env -s && ng build --configuration production --watch --base-href /turbo-todo/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "write:env": "ngx-scripts env npm_package_version"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +46,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "prettier": "^2.8.3",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "@ngx-rocket/scripts": "^5.2.2"
   }
 }
