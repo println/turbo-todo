@@ -1,0 +1,59 @@
+<label>Categoria: <input type="text" ngModel #name="ngModel" [ngModelOptions]="{standalone:true}"></label>
+<button (click)="addCategory(name.value)">ADD</button>
+<br>
+<ul *ngIf="taskRepository.categoryItems$ | async as categoriesUi">
+  <li class="book-item" *ngFor="let categoryUi of categoriesUi">
+    <span>{{categoryUi.name}} - {{categoryUi | json}}</span>
+    <button *ngIf="!categoryUi.active" (click)="taskRepository.removeItem(categoryUi.id)">REMOVE</button>
+
+  </li>
+</ul>
+
+<br><br>
+<div *ngIf="taskRepository.categoryItems$ | async as categories">
+  <label>Grupo: <input type="text" #groupName></label>
+  <select #categoryId>
+    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+  </select>
+  <button (click)="addGroup(groupName.value, categoryId.value)">ADD</button>
+</div>
+<br>
+<ul *ngIf="taskRepository.groupItems$ | async as groupsUi">
+  <li class="book-item" *ngFor="let groupUi of groupsUi">
+    <span>{{$any(groupUi.parent).name}}: {{groupUi.name}} - {{groupUi | json}}</span>
+    <button *ngIf="!groupUi.active" (click)="taskRepository.removeItem(groupUi.id)">REMOVE</button>
+  </li>
+</ul>
+
+
+<br><br>
+<div *ngIf="taskRepository.groupItems$ | async as groups">
+  <label>Tarefa: <input type="text" #taskName></label>
+  <select #groupId>
+    <option *ngFor="let group of groups" [value]="group.id">{{group.name}}</option>
+  </select>
+  <button (click)="addTask(taskName.value, groupId.value)">ADD</button>
+</div>
+<br>
+<ul *ngIf="taskRepository.taskItems$ | async as tasks">
+  <li class="book-item" *ngFor="let task of tasks">
+    <span>{{$any(task.parent).name}}: {{task.name}} - {{task | json}}</span>
+    <button *ngIf="!task.active" (click)="taskRepository.removeItem(task.id)">REMOVE</button>
+    <button *ngIf="!task.active" (click)="taskRepository.doneTask(task.id)">DONE</button>
+  </li>
+</ul>
+
+
+
+<br><br>
+
+
+<h2>Snapshot <button (click)="snapshotService.renewStore()">renew</button></h2>
+<div *ngIf="snapshotQuery.snapshot$ | async as snapshot">
+  <span  *ngFor="let task of snapshot.tasks">{{task | json}}</span>
+</div>
+
+<h2>history <button (click)="historyService.clear()">clear</button></h2>
+<div *ngIf="historyQuery.historyEntries$ | async as entries">
+  <span  *ngFor="let entry of entries">{{entry | json}}</span>
+</div>

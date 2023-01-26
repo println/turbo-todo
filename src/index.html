@@ -6,8 +6,86 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
+  <style>
+    /*html {*/
+    /*  background-color: #314855;*/
+    /*  position: fixed;*/
+    /*  top: 0;*/
+    /*  left: 0;*/
+    /*  right: 0;*/
+    /*  bottom: 0;*/
+    /*  display: flex;*/
+    /*  flex-direction: column;*/
+    /*  overflow: hidden;*/
+    /*}*/
+
+    /*body {*/
+    /*  background-color: #F35251;*/
+    /*  display: flex;*/
+    /*  flex: 1;*/
+    /*  margin: 10px;*/
+    /*  padding: 10px;*/
+    /*  overflow-y: auto;*/
+    /*}*/
+  </style>
+  <style type="text/css">
+    .app-loading {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-loading .spinner {
+      width: 40px;
+      transform-origin: center center;
+      overflow: hidden;
+      animation: rotate 0.75s linear infinite;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 80, 25;
+      stroke-dashoffset: 0;
+      stroke: #feb722;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+<app-root>
+  <div class="app-loading">
+    <div class="nst-logo-box"></div>
+    <svg class="spinner" viewBox="25 25 50 50">
+      <circle
+        class="path"
+        cx="50"
+        cy="50"
+        r="18"
+        fill="none"
+        stroke-width="5"
+        stroke-miterlimit="10"
+      />
+    </svg>
+  </div>
+</app-root>
+<noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>
