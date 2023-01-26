@@ -1,0 +1,93 @@
+{
+  "configVersion": 1,
+  "timestamp": 1674743714220,
+  "index": "/turbo-todo/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/turbo-todo/103.de15591e63baaa45.js",
+        "/turbo-todo/135.c22132d22c10c693.js",
+        "/turbo-todo/374.f3b8f6e2b6c87190.js",
+        "/turbo-todo/437.d3f448a0fa6681a4.js",
+        "/turbo-todo/675.38d5239099146b24.js",
+        "/turbo-todo/842.674dc404c0f9b1d5.js",
+        "/turbo-todo/favicon.ico",
+        "/turbo-todo/index.html",
+        "/turbo-todo/main.02259635d4841295.js",
+        "/turbo-todo/manifest.webmanifest",
+        "/turbo-todo/polyfills.32288760c5309585.js",
+        "/turbo-todo/runtime.6c698aecf5500368.js",
+        "/turbo-todo/styles.45c16668564ce3c9.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/turbo-todo/assets/icons/icon-128x128.png",
+        "/turbo-todo/assets/icons/icon-144x144.png",
+        "/turbo-todo/assets/icons/icon-152x152.png",
+        "/turbo-todo/assets/icons/icon-192x192.png",
+        "/turbo-todo/assets/icons/icon-384x384.png",
+        "/turbo-todo/assets/icons/icon-512x512.png",
+        "/turbo-todo/assets/icons/icon-72x72.png",
+        "/turbo-todo/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/turbo-todo/103.de15591e63baaa45.js": "628d30a0c3e97e9eb096dae4b0a5374e0df43dc1",
+    "/turbo-todo/135.c22132d22c10c693.js": "665b7daee29171900bb532e5fc3883dc2d1b63c9",
+    "/turbo-todo/374.f3b8f6e2b6c87190.js": "d583b361567c9df4405db767183ed24a7ca4e63e",
+    "/turbo-todo/437.d3f448a0fa6681a4.js": "6b55bf3f63806a7fcbc491d64607a77c39d6bb57",
+    "/turbo-todo/675.38d5239099146b24.js": "305894a07b71942b89a8cc41e853987ac0f4adfd",
+    "/turbo-todo/842.674dc404c0f9b1d5.js": "d4d67d8ecc5023420685ca5dfac35dd236e94fa8",
+    "/turbo-todo/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/turbo-todo/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/turbo-todo/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/turbo-todo/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/turbo-todo/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/turbo-todo/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/turbo-todo/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/turbo-todo/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/turbo-todo/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/turbo-todo/index.html": "1c1bd5f16a6397dac8625989945dac5fc2ad6b31",
+    "/turbo-todo/main.02259635d4841295.js": "556c5010329a68f3a004575230302f8c3dcdfabe",
+    "/turbo-todo/manifest.webmanifest": "43a350ee4f0ce8dd97b65962200629925ddb702c",
+    "/turbo-todo/polyfills.32288760c5309585.js": "6120d5507ef23566711ba2893d1037bc306c4a47",
+    "/turbo-todo/runtime.6c698aecf5500368.js": "7db4a545bf1a174b7a3d7adabc548c1502ac2e4e",
+    "/turbo-todo/styles.45c16668564ce3c9.css": "b935ba50f320cdefbd73370aa4014aeb919683aa"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
