@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ci": "npm run write:env -s && ng build --configuration production --watch --base-href /turbo-todo/",
+    "build:ci": "npm run write:env -s && ng build --configuration production --base-href /turbo-todo/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "write:env": "ngx-scripts env npm_package_version"
