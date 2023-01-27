@@ -1,15 +1,16 @@
 <ng-container>
-<h2>Marcação de tarefas realizadas ({{(taskRepository.activeTasks$ | async)?.length}})</h2>
-<br>
-<div *ngIf="taskRepository.taskItems$ | async as tasks" class="d-flex flex-column w-75 m-auto">
-  <div *ngFor="let task of tasks"
-       class="btn-group-vertical m-1" role="group" aria-label="Vertical radio toggle button group">
-    <input type="checkbox" class="btn-check" name="vbtn-radio" [id]="task.id" autocomplete="off"
-           [checked]="task.active" (click)="toggle(task)">
-    <label class="btn btn-outline-success" [for]="task.id">
-      {{task.name}}
-      <span [class.invisible]="!task.active" class="float-end">✓</span>
-    </label>
+  <h2>Tarefas do dia ({{(taskRepository.activeTasks$ | async)?.length}})</h2>
+  <p>{{date}}</p>
+  <br>
+  <div *ngIf="taskRepository.taskItems$ | async as tasks" class="d-flex flex-column w-75 m-auto">
+    <div *ngFor="let task of tasks"
+         class="btn-group-vertical m-1" role="group" aria-label="Vertical radio toggle button group">
+      <input type="checkbox" class="btn-check" name="vbtn-radio" [id]="task.id" autocomplete="off"
+             [checked]="task.active" (click)="toggle(task)">
+      <label class="btn btn-outline-success" [for]="task.id">
+        {{task.name}}
+        <span [class.invisible]="!task.active" class="float-end">✓</span>
+      </label>
+    </div>
   </div>
-</div>
 </ng-container>

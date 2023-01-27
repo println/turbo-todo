@@ -9,6 +9,8 @@ import { UiUtils } from '@shared/states/tasks/ui-utils';
   styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent {
+  date = new Date().toLocaleDateString();
+
   constructor(public taskRepository: TaskRepository) {}
 
   toggle(task: Item & UiUtils.State) {
