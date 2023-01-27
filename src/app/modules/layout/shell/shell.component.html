@@ -90,13 +90,16 @@
 
               <ul class="list-unstyled fw-normal pb-2 fs-6">
                 <li>
-                  <a [routerLink]="route.dashboard.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">Dashboard</a>
+                  <a [routerLink]="route.dashboard.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">{{route.dashboard.title}}</a>
                 </li>
                 <li>
-                  <a [routerLink]="route.settings.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">Settings</a>
+                  <a [routerLink]="route.settings.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">{{route.settings.title}}</a>
                 </li>
                 <li>
-                  <a routerLink="/group/detail" routerLinkActive="active" class="bd-links-link d-inline-block rounded">Group/Detail</a>
+                  <a [routerLink]="route.checklist.id" routerLinkActive="active" class="bd-links-link d-inline-block rounded">{{route.checklist.title}}</a>
+                </li>
+                <li>
+                  <a routerLink="/group/detail" routerLinkActive="active" class="bd-links-link d-inline-block rounded">Debug</a>
                 </li>
               </ul>
             </li>

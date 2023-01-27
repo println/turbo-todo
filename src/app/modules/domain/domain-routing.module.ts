@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('./settings/settings.module').then((m) => m.SettingsModule),
   },
   {
+    path: ROUTE.checklist.id,
+    pathMatch: 'prefix',
+    loadChildren: () => import('./checklist/checklist.module').then((m) => m.ChecklistModule),
+  },
+  {
     path: ROUTE.group.id,
     pathMatch: 'prefix',
     loadChildren: () => import('./group/group.module').then((m) => m.GroupModule),

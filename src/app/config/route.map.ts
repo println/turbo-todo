@@ -1,6 +1,7 @@
 export const ROUTE = {
   dashboard: { id: 'dashboard', path: '/dashboard', title: 'Dashboard' },
   settings: { id: 'settings', path: '/settings', title: 'Settings' },
+  checklist: { id: 'checklist', path: '/checklist', title: 'Checklist' },
   group: { id: 'group', path: '/group', title: 'Group' },
   task: { id: 'task', path: '/task', title: 'Task' },
   about: { id: 'about', path: '/about', title: 'About' },
