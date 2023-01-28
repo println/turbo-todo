@@ -3,35 +3,37 @@
   <p>{{date}}</p>
   <br>
   <ng-container *ngIf="snapshotQuery.taskList$ | async as categories">
-    <div class="d-flex flex-row w-75 m-auto rounded-2" *ngFor="let category of categories">
+    <ng-container *ngFor="let category of categories">
+      <div class="d-flex flex-row w-75 m-auto rounded-2" *ngIf="!category.empty">
   <span class="bg-opacity-25 bg-info p-0 text-success text-uppercase fw-semibold rounded-2 border border-success"
         style="text-align: center;writing-mode: vertical-rl; font-size: xx-small">{{category.name}}</span>
-      <div class="d-flex flex-column flex-fill">
-        <ng-container *ngIf="category.children as groups">
-          <ng-container *ngFor="let group of groups">
-            <section class="d-flex flex-row flex-fill" *ngIf="!!group.children.length">
-              <ng-container *ngIf="group.children as tasks">
-                <div class="d-flex flex-column flex-fill">
-                  <ng-container *ngFor="let task of tasks">
-                    <div role="group" aria-label="Vertical radio toggle button group"
-                         class="btn-group-vertical m-1 flex-fill">
-                      <input type="checkbox" name="vbtn-radio" [id]="task.id" [checked]="task.active"
-                             (click)="toggle(task)" autocomplete="off" class="btn-check">
-                      <label class="btn btn-outline-success" [for]="task.id">
-                        {{task.name}}
-                        <span [class.invisible]="!task.active" class="float-end">✓</span>
-                      </label>
-                    </div>
-                  </ng-container>
-                </div>
-              </ng-container>
-              <span
-                class="bg-opacity-50 text-success p-0 bg-warning text-uppercase fw-semibold rounded-2 border border-success"
-                style="text-align: center;writing-mode: vertical-rl; font-size: xx-small">{{group.name}}</span>
-            </section>
+        <div class="d-flex flex-column flex-fill">
+          <ng-container *ngIf="category.children as groups">
+            <ng-container *ngFor="let group of groups">
+              <section class="d-flex flex-row flex-fill" *ngIf="!group.empty">
+                <ng-container *ngIf="group.children as tasks">
+                  <div class="d-flex flex-column flex-fill">
+                    <ng-container *ngFor="let task of tasks">
+                      <div role="group" aria-label="Vertical radio toggle button group"
+                           class="btn-group-vertical m-1 flex-fill">
+                        <input type="checkbox" name="vbtn-radio" [id]="task.id" [checked]="task.active"
+                               (click)="toggle(task)" autocomplete="off" class="btn-check">
+                        <label class="btn btn-outline-success" [for]="task.id">
+                          {{task.name}}
+                          <span [class.invisible]="!task.active" class="float-end">✓</span>
+                        </label>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ng-container>
+                <span
+                  class="bg-opacity-50 text-success p-0 bg-warning text-uppercase fw-semibold rounded-2 border border-success"
+                  style="text-align: center;writing-mode: vertical-rl; font-size: xx-small">{{group.name}}</span>
+              </section>
+            </ng-container>
           </ng-container>
-        </ng-container>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 </ng-container>

@@ -7,6 +7,7 @@ import { snapshotStore } from './snapshot.store';
 
 export interface SnapshotItem extends Item, UiUtils.State {
   children: SnapshotItem[];
+  empty: boolean;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,7 +20,11 @@ export class SnapshotQuery {
   constructor(protected taskRepository: TaskRepository) {}
 
   private restructure(items: (Item & UiUtils.State)[]) {
-    const snapshotItems: SnapshotItem[] = items.map((i) => ({ ...i, children: [] }));
+    const snapshotItems: SnapshotItem[] = items.map((i) => ({
+      ...i,
+      children: [],
+      empty: i.type != ItemType.TASK,
+    }));
 
     const snapshotItemsMap: { [key: string]: SnapshotItem } = snapshotItems
       .map((i) => ({ [i.id]: i }))
@@ -34,7 +39,9 @@ export class SnapshotQuery {
     snapshotItemsReversed
       .filter((i) => !!i.parent)
       .forEach((i) => {
-        snapshotItemsMap[i.parent as any].children.push(i);
+        let parent = snapshotItemsMap[i.parent as any];
+        parent.children.push(i);
+        parent.empty = i.empty;
       });
 
     return snapshotItems.filter((i) => i.type == ItemType.CATEGORY);
