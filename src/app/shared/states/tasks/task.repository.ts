@@ -3,8 +3,11 @@ import { createStore } from '@ngneat/elf';
 import {
   addEntities,
   deleteEntities,
+  getAllEntities,
+  getAllEntitiesApply,
+  moveEntity,
+  selectAllEntities,
   selectEntities,
-  selectManyByPredicate,
   UIEntitiesRef,
   unionEntities,
   updateEntities,
@@ -31,23 +34,19 @@ const persist = persistState(taskStore, {
 @Injectable({ providedIn: 'root' })
 export class TaskRepository {
   private uiStates$ = taskStore.pipe(selectEntities({ ref: UIEntitiesRef }));
-  private category$ = taskStore.pipe(
-    selectManyByPredicate((entity) => entity.type === ItemType.CATEGORY)
-  );
-  private group$ = taskStore.pipe(
-    selectManyByPredicate((entity) => entity.type === ItemType.GROUP)
-  );
-  private task$ = taskStore.pipe(selectManyByPredicate((entity) => entity.type === ItemType.TASK));
+  items$ = taskStore
+    .combine({ entities: taskStore.pipe(selectAllEntities()), UIEntities: this.uiStates$ })
+    .pipe(unionEntities());
 
-  categoryItems$ = taskStore
-    .combine({ entities: this.category$, UIEntities: this.uiStates$ })
-    .pipe(unionEntities());
-  groupItems$ = taskStore
-    .combine({ entities: this.group$, UIEntities: this.uiStates$ })
-    .pipe(unionEntities());
-  taskItems$ = taskStore
-    .combine({ entities: this.task$, UIEntities: this.uiStates$ })
-    .pipe(unionEntities());
+  categoryItems$ = this.items$.pipe(
+    map((items) => items.filter((item) => item.type === ItemType.CATEGORY))
+  );
+  groupItems$ = this.items$.pipe(
+    map((items) => items.filter((item) => item.type === ItemType.GROUP))
+  );
+  taskItems$ = this.items$.pipe(
+    map((items) => items.filter((item) => item.type === ItemType.TASK))
+  );
   activeTasks$ = this.taskItems$.pipe(map((items) => items.filter((t) => t.active)));
 
   addCategory(id: string) {
@@ -100,6 +99,33 @@ export class TaskRepository {
     if (parent) {
       taskStore.update(UiUtils.Reducers.on(parent));
     }
+
+    this.order(item);
+  }
+
+  private order(item: Item) {
+    if (item.type == ItemType.CATEGORY) {
+      return;
+    }
+
+    const items: Item[] = taskStore.query(getAllEntities());
+    const total = items.length;
+
+    if (total <= 1) {
+      return;
+    }
+
+    const lastSiblingIndex = (items as any).findLastIndex(
+      (i: Item) => i.parent == item.parent && i != item
+    );
+    const parentIndex = items.findIndex((i) => i.id == item.parent);
+
+    let data = {
+      fromIndex: total - 1,
+      toIndex: items[lastSiblingIndex] ? lastSiblingIndex + 1 : parentIndex + 1,
+    };
+
+    taskStore.update(moveEntity(data));
   }
 
   private hasChild(parent: string): boolean {
@@ -116,8 +142,14 @@ export class TaskRepository {
   }
 
   private getItems(type?: ItemType) {
-    let items = Object.values(this.getValue().entities);
-    return type ? items.filter((i) => i.type == type) : items;
+    let query = getAllEntities();
+
+    if (type) {
+      query = getAllEntitiesApply({
+        filterEntity: (i) => i.type == type,
+      });
+    }
+    return taskStore.query(query);
   }
 
   private getValue() {

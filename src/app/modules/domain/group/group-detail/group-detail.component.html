@@ -1,3 +1,13 @@
+<h2>DEBUG</h2>
+<br>
+<br>
+<h3>Store</h3>
+<br>
+<ol *ngIf="taskRepository.items$ | async as items">
+  <li *ngFor="let item of items">{{item.type}}: {{item.name}}</li>
+</ol>
+<br>
+<h3>Criação</h3>
 <label>Categoria: <input type="text" ngModel #name="ngModel" [ngModelOptions]="{standalone:true}"></label>
 <button (click)="addCategory(name.value)">ADD</button>
 <br>
@@ -44,16 +54,19 @@
 </ul>
 
 
-
 <br><br>
 
 
-<h2>Snapshot <button (click)="snapshotService.renewStore()">renew</button></h2>
+<h2>Snapshot
+  <button (click)="snapshotService.renewStore()">renew</button>
+</h2>
 <div *ngIf="snapshotQuery.snapshot$ | async as snapshot">
-  <span  *ngFor="let task of snapshot.tasks">{{task | json}}</span>
+  <span *ngFor="let task of snapshot.tasks">{{task | json}}</span>
 </div>
 
-<h2>history <button (click)="historyService.clear()">clear</button></h2>
+<h2>history
+  <button (click)="historyService.clear()">clear</button>
+</h2>
 <div *ngIf="historyQuery.historyEntries$ | async as entries">
-  <span  *ngFor="let entry of entries">{{entry | json}}</span>
+  <span *ngFor="let entry of entries">{{entry | json}}</span>
 </div>
