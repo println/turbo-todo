@@ -40,7 +40,7 @@ export class SnapshotQuery {
       .filter((i) => !!i.parent)
       .forEach((i) => {
         let parent = snapshotItemsMap[i.parent as any];
-        parent.children.push(i);
+        parent.children.unshift(i);
         parent.empty = i.empty;
       });
 
